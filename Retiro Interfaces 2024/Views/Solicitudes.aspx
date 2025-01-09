@@ -1,0 +1,17 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterAlumno.master" AutoEventWireup="true" CodeBehind="Solicitudes.aspx.cs" Inherits="Retiro_Interfaces_2024.Views.Solicitudes" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContenidoAlumno" runat="server">
+
+    <div class="contenido">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" CssClass="grid-style">
+            <Columns>
+                <asp:BoundField DataField="Voucher" HeaderText="Código de Voucher" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="Curso" HeaderText="Curso" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="Fecha" HeaderText="Fecha" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="Motivo" HeaderText="Motivo" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="Estado" HeaderText="Estado" ItemStyle-CssClass="fila-grid" />
+            </Columns>
+        </asp:GridView>
+    </div>
+
+</asp:Content>

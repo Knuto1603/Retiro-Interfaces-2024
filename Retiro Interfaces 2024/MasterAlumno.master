@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MasterAlumno.master.cs" Inherits="Retiro_Interfaces_2024.MasterAlumno" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="DatosNavbar" runat="server">
+    <div class="container">
+        <div class="section p-login izquierda" style="color: white;">
+            <p>
+                Cu Alumno:
+        <asp:Label ID="lblCuAlumno" runat="server"></asp:Label>
+            </p>
+            <p>
+                Escuela Profesional:
+        <asp:Label ID="lblEscuela" runat="server"></asp:Label>
+            </p>
+            <p>
+                Facultad:
+        <asp:Label ID="lblFacultad" runat="server"></asp:Label>
+            </p>
+        </div>
+    </div>
+
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="NavBar" runat="server">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <div class="navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                <li class="nav-item dropdown ini">
+                    <a class="nav-link ini" href="InicioAlumno.aspx">Inicio</a>
+                </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Semestre Actual
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Horario de Clases</a></li>
+                            <li><a class="dropdown-item" href="#">Boletin de Curso</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Procesos Academicos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Plan de Estudios</a></li>
+                            <li><a class="dropdown-item" href="#">Programación Académica</a></li>
+                            <li><a class="dropdown-item" href="#">Verificación de Cursos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resultados Académicos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Historial Académico</a></li>
+                            <li><a class="dropdown-item" href="#">Informe Académico</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Retiro de Curso
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="CursosDisp.aspx">Cursos Disponibles</a></li>
+                            <li><a class="dropdown-item" href="Solicitudes.aspx">Solicitudes</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="nav-link" OnClick="btnCerrarSesion_Click">Cerrar Sesión</asp:LinkButton>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="Contenido" runat="server">
+    <asp:ContentPlaceHolder ID="ContenidoAlumno" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

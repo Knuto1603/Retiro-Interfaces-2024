@@ -1,0 +1,315 @@
+﻿html,body {
+    background-color:white ;
+    position:relative;
+    height:100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column; /* Coloca el contenido y el footer en columnas */
+    min-height: 100vh; /* Asegura que ocupe al menos el 100% de la pantalla */
+}
+
+.contenido {
+    background-color: white;
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    flex-direction: column; /* Coloca el contenido y el footer en columnas */
+    flex-grow: 1; /* Asegura que ocupe al menos el 100% de la pantalla */
+}
+
+
+.header-top {
+    display:flex;
+    position: relative;
+    background-color: #428bca;
+    width: 100%;
+    /*height:110px;*/
+}
+
+    .header-top::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background-color: #9a1616;
+        height: 5px;
+        width: 100%;
+    }
+
+.header-midle {
+    position: relative;
+    width: 100%;
+}
+
+    .navbar::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        background-color: #7ea700;
+        height: 2px;
+        width: 100%;
+    }
+
+.centrado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado horizontal */
+    align-items: flex-start; /* Centrado vertical */
+    
+}
+
+.horinzontal {
+    display: flex;
+    justify-content: center; /* Centrado horinzontal */
+}
+
+.vertical {
+    display: flex;
+    align-items: center; /* Centrado vertical */
+}
+
+#logo {
+    width: 100px;
+    height: 100px;
+    padding:5px;
+}
+
+h3, small {
+    color: white;
+}
+
+h3 {
+    font-size: 24px;
+    font-family: "Trebuchet MS", serif;
+    font-weight: 500;
+    line-height: 1.1;
+    display: flex;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+
+#footer-text {
+    display: block; /* Asegura que el elemento ocupe el ancho completo */
+    text-align: center; /* Centra el texto dentro del bloque */
+    margin: 0 auto; /* Opcional, para alinear con el flujo normal */
+    color: rgb(119, 119, 119);
+    font-size:small;
+}
+
+.footer {
+    display: flex;
+    background-color: #f5f5f5;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.p-login{
+    width:auto;
+    text-align:right;
+    font-size:small;
+    font-weight:bold;
+}
+
+#login {
+    width :90%;
+    padding:10px;
+}
+
+.container{
+    width:90%;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333333;
+    border: 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.izquierda {
+    width:auto;
+    justify-items:left;
+    text-align: left;
+}
+
+.derecha {
+    justify-items: right;
+    text-align: right;
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Centrar verticalmente */
+    margin-bottom: 1rem; /* Espaciado entre grupos */
+    padding:5px;
+}
+
+.form-group2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem; /* Espaciado entre grupos */
+    padding: 10px;
+}
+
+.form-label {
+    
+    white-space: nowrap; /* Evitar que el texto del label se divida en varias líneas */
+}
+
+.form-control,
+.form-select {
+    margin-left: 20px;
+    height: 30px;
+    width: 400px;
+    padding: 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.btnEnviar {
+    margin-top: 5px;
+    background-color: #0056b3;
+    border: 1px;
+    color: white;
+}
+
+    .btnEnviar:hover {
+        background-color: #7ea700; /* Cambia el color de fondo */
+        color: #fff; /* Cambia el color del texto si es necesario */
+    }
+
+.ini {
+    background-color: #0088cc;
+    color: white;
+}
+
+li {
+    padding: 5px;
+}
+
+.ini:hover,li:hover {
+    background-color: #e7e7e7;
+}
+
+.fila-grid{
+    padding:10px;
+
+}
+
+.fecha-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.section {
+    width: auto;
+    margin-bottom: 20px;
+}
+
+    .section h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+    }
+
+    .section p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+.motivos-textbox {
+    width: 100%;
+    height: 80px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    resize: none;
+}
+
+.submit-button {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px; /* Ancho ajustable */
+    height: 34px; /* Altura ajustable */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+    .switch input {
+        display: none; /* Oculta el checkbox predeterminado */
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #428bca;
+    transition: 0.4s;
+    border-radius: 34px; /* Hace el borde redondo */
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px; /* Tamaño del círculo */
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+input:checked + .slider {
+    background-color: #4CAF50; /* Color cuando está activo */
+}
+
+    input:checked + .slider:before {
+        transform: translateX(26px); /* Movimiento del círculo */
+    }    
