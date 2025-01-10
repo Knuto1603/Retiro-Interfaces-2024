@@ -43,7 +43,9 @@ namespace Retiro_Interfaces_2024.Views
                 Response.Write("Usuario valido");
                 if (valido)
                 {
+
                     Session["codUniversitario"] = codUniversitario.Value.ToString();
+
                     bool cam = cambio.Checked;
                     if (cam)
                     {
