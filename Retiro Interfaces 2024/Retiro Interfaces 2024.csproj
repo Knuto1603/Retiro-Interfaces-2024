@@ -214,6 +214,7 @@
     <Content Include="Views\CursosDisp.aspx" />
     <Content Include="Views\Solicitud.aspx" />
     <Content Include="Views\Solicitudes.aspx" />
+    <Content Include="Views\SolicitudesSec.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Views\web.config" />
@@ -309,6 +310,13 @@
     </Compile>
     <Compile Include="Views\Solicitudes.aspx.designer.cs">
       <DependentUpon>Solicitudes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SolicitudesSec.aspx.cs">
+      <DependentUpon>SolicitudesSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SolicitudesSec.aspx.designer.cs">
+      <DependentUpon>SolicitudesSec.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

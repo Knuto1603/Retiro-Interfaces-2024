@@ -99,6 +99,5 @@ namespace Retiro_Interfaces_2024.Models
         }
 
 
-
     }
 }
