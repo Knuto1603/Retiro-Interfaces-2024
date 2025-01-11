@@ -243,7 +243,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlumnoModel.cs" />
+    <Compile Include="Models\CursoModel.cs" />
+    <Compile Include="Models\DetalleInscripcionModel.cs" />
+    <Compile Include="Models\DocenteModel.cs" />
+    <Compile Include="Models\EscuelaModel.cs" />
+    <Compile Include="Models\EvidenciaModel.cs" />
+    <Compile Include="Models\FacultadModel.cs" />
+    <Compile Include="Models\InscripcionPorCursosModel.cs" />
     <Compile Include="Models\LoginF.cs" />
+    <Compile Include="Models\PersonaModel.cs" />
+    <Compile Include="Models\RevisionSolicitudModel.cs" />
+    <Compile Include="Models\SecretarioAcademicoModel.cs" />
+    <Compile Include="Models\SolicitudModel.cs" />
+    <Compile Include="Models\VoucherModel.cs" />
     <Compile Include="Views\InicioSecretario.aspx.cs">
       <DependentUpon>InicioSecretario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

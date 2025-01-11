@@ -13,12 +13,12 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="TextInput" data-val-required="El campo C&#243;digo de Alumno es requerido" class="form-label p-login">Código de Voucher:</label>
-                            <input type="text" class="form-control" placeholder="Código de Voucher">
+                            <input type="text" class="form-control" id="voucherCode" placeholder="Código de Voucher">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="btnAccept" runat="server" OnClick="openNewPage()" data-bs-dismiss="modal">Verificar</button>
+                        <button type="button" class="btn btn-primary" id="btnAccept">Verificar</button>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,6 @@
     <div id="overlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 9999;"></div>
 
     <script>
-
         document.addEventListener("DOMContentLoaded", function () {
             // Verifica si el HiddenField indica que la modal debe mostrarse
             var modalState = document.getElementById('<%= hfModalState.ClientID %>').value;
@@ -55,13 +54,26 @@
                 var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
                 myModal.show();
             }
-        });
 
-        function openNewPage() {
-            // Llama a la página a la que quieres redirigir
-            window.open('Solicitud.aspx', '_blank', 'width=800,height=600');
-            return false;
-           // window.location.href = 'Login.aspx';
-        }
+            // Lógica para validar el input y cerrar la modal
+            document.getElementById('btnAccept').addEventListener('click', function () {
+                var inputField = document.getElementById('voucherCode');
+                var inputValue = inputField.value.trim();
+
+                if (inputValue === "") {
+                    alert('Por favor ingrese un código de voucher válido.');
+                    inputField.focus();
+                } else {
+                    // Validación exitosa, cerrar la modal
+                    var myModalEl = document.getElementById('staticBackdrop');
+                    var modalInstance = bootstrap.Modal.getInstance(myModalEl);
+                    modalInstance.hide();
+
+                    // Lógica adicional: redirigir o realizar otras acciones
+                    window.open('Solicitud.aspx', '_blank', 'width=800,height=600');
+                }
+            });
+        });
     </script>
+
 </asp:Content>

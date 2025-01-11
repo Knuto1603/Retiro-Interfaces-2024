@@ -11,7 +11,7 @@ namespace Retiro_Interfaces_2024
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblCuAlumno.Text = Session["codUniversitario"].ToString();
+            //lblCuAlumno.Text = Session["codUniversitario"].ToString();
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
