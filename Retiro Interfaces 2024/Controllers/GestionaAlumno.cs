@@ -64,6 +64,7 @@ namespace Retiro_Interfaces_2024.Controllers
         }
 
 
+
         public AlumnoModel crearAlumno(string cod)
         {
             DateTime soloFechaEspecifica = new DateTime(2023, 12, 25);
