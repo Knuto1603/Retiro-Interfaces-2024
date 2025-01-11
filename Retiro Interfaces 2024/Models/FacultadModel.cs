@@ -11,9 +11,9 @@ namespace Retiro_Interfaces_2024.Models
         private string nombre;
         private DateTime fechaCreacion;
 
-        FacultadModel(
-            String facultad,
-            String nombre,
+        public FacultadModel(
+            string facultad,
+            string nombre,
             DateTime fechaCreacion)
         {
             this.facultad = facultad;

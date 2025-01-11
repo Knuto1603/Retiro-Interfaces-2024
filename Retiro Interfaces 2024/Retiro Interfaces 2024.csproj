@@ -230,8 +230,6 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\GestionaAlumno.cs" />
-    <Compile Include="Controllers\GestionaCurso.cs" />
-    <Compile Include="Controllers\GestionaSolicitud.cs" />
     <Compile Include="Controllers\GestionConexion.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

@@ -40,6 +40,8 @@ namespace Retiro_Interfaces_2024.Models
                 return false;
             }
         }
+
+
         public bool VerUsuario()
         {
             return buscarUsuario(codUniversitario);

@@ -12,7 +12,7 @@ namespace Retiro_Interfaces_2024.Models
         private DateTime fechaCreacion;
         private FacultadModel facultad;
 
-        EscuelaModel(
+        public EscuelaModel(
             String codigoEscuela,
             String nombre,
             DateTime fechaCreacion,
