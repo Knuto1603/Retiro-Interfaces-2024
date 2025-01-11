@@ -13,11 +13,6 @@ public static class GestionaSolicitud
         return new SolicitudModel();
     }
 
-    public static SolicitudModel ObtenerSolicitudConDatos(SolicitudModel solicitudDesdeVista)
-    {
-        return solicitudDesdeVista;
-    }
-
     public static bool InsertarSolicitud(SolicitudModel solicitud)
     {
         bool insertado = false;
@@ -26,13 +21,13 @@ public static class GestionaSolicitud
             con = GestionaDatos.conectar();
             using (SqlCommand cmd = new SqlCommand("EXEC InsertarSolicitud @codigo, @idAlumno, @idCurso, @fechaHora, @codigoVoucher, @motivo, @estado", con))
             {
-                cmd.Parameters.AddWithValue("@codigo", solicitud.CodigoSolicitud);
-                cmd.Parameters.AddWithValue("@idAlumno", solicitud.IDAlumno);
-                cmd.Parameters.AddWithValue("@idCurso", solicitud.IDCurso);
-                cmd.Parameters.AddWithValue("@fechaHora", solicitud.FechaHora);
-                cmd.Parameters.AddWithValue("@codigoVoucher", solicitud.CodigoVoucher);
-                cmd.Parameters.AddWithValue("@motivo", solicitud.Motivo);
-                cmd.Parameters.AddWithValue("@estado", solicitud.Estado);
+                cmd.Parameters.AddWithValue("@codigo", solicitud.getCodigoSolicitud());
+                cmd.Parameters.AddWithValue("@idAlumno", solicitud.getAlumno());
+                cmd.Parameters.AddWithValue("@idCurso", solicitud.getIdCurso());
+                cmd.Parameters.AddWithValue("@fechaHora", solicitud.getFechaHora());
+                cmd.Parameters.AddWithValue("@codigoVoucher", solicitud.getVoucher());
+                cmd.Parameters.AddWithValue("@motivo", solicitud.getMotivo());
+                cmd.Parameters.AddWithValue("@evidencia", solicitud.getEvidencia());
 
                 insertado = cmd.ExecuteNonQuery() > 0;
             }
@@ -59,16 +54,26 @@ public static class GestionaSolicitud
             {
                 while (dr.Read())
                 {
-                    SolicitudModel solicitud = new SolicitudModel
-                    {
-                        CodigoSolicitud = dr["CodigoSolicitud"].ToString(),
-                        IDAlumno = dr["IDAlumno"].ToString(),
-                        IDCurso = dr["IDCurso"].ToString(),
-                        FechaHora = DateTime.Parse(dr["FechaHora"].ToString()),
-                        CodigoVoucher = dr["CodigoVoucher"].ToString(),
-                        Motivo = dr["Motivo"].ToString(),
-                        Estado = dr["Estado"].ToString()
-                    };
+                    /* SolicitudModel solicitud = new SolicitudModel
+                     {
+                         CodigoSolicitud = dr["CodigoSolicitud"].ToString(),
+                         IDAlumno = dr["IDAlumno"].ToString(),
+                         IDCurso = dr["IDCurso"].ToString(),
+                         FechaHora = DateTime.Parse(dr["FechaHora"].ToString()),
+                         CodigoVoucher = dr["CodigoVoucher"].ToString(),
+                         Motivo = dr["Motivo"].ToString(),
+                         Estado = dr["Estado"].ToString()  
+                     };*/
+                    SolicitudModel solicitud = new SolicitudModel.Builder().
+                        SetCodigoSolicitud(dr["CodigoSolicitud"].ToString()).
+                        SetIdCurso(dr["IDCurso"].ToString()).
+                        SetMotivo(dr["Motivo"].ToString()).
+                        SetAlumno(dr["IDAlumno"].ToString()).
+                        SetFechaHora(DateTime.Parse(dr["FechaHora"].ToString())).
+                        SetVoucher(dr["CodigoVoucher"].ToString()).
+                        SetMotivo().
+                        SetEvidencia().
+                        build();
                     lista.Add(solicitud);
                 }
             }
