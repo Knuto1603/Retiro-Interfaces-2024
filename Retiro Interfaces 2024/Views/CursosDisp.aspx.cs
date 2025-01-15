@@ -7,6 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Retiro_Interfaces_2024.Controllers;
+using Retiro_Interfaces_2024.Models;
 
 namespace Retiro_Interfaces_2024.Views
 {
@@ -25,29 +27,32 @@ namespace Retiro_Interfaces_2024.Views
 
         private void CargarDatos()
         {
-            // Conexión a la base de datos
-            string connectionString = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            // Instanciar la clase GestionaConexion
+            GestionaConexion conexion = new GestionaConexion();
+            AlumnoModel miAlumno = WebForm2.alumno;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+
+            try
             {
-                string query = @"SELECT 
-                                UPPER(Cu.Nombre) AS Curso, 
-                                Concat(UPPER(P.Nombre),' ',UPPER(P.Apellido)) as Profesor, 
-                                UPPER(DI.Grupo) AS Grupo, 
-                                UPPER(DI.Aula) AS Aula
-                                FROM Detalle_Inscripcion DI
-                                INNER JOIN Docente D
-                                ON DI.ID_Docente = D.ID_Docente
-                                INNER JOIN Cursos Cu
-                                ON DI.ID_Curso = Cu.ID_Curso
-                                INNER JOIN Persona P
-                                ON D.ID_Persona = P.ID_Persona"; // Ajusta la consulta según tu base de datos
-                SqlDataAdapter da = new SqlDataAdapter(query, conn);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                // Nombre del procedimiento almacenado
+                string procedimiento = "sp_CargarDatosPorCod";
+                Dictionary<string,object> parametros = new Dictionary<string, object>();
+                parametros.Add("@CodUniversitario", miAlumno.getCodigoUniversitario());
 
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                // Ejecutar el procedimiento almacenado y obtener los datos
+                using (var reader = conexion.ConsultarProcedimiento(procedimiento,parametros))
+                {
+                    DataTable dt = new DataTable();
+                    dt.Load(reader); // Cargar los datos desde el SqlDataReader al DataTable
+
+                    GridView1.DataSource = dt;
+                    GridView1.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar el error (puedes mostrar un mensaje o registrar el error)
+                Console.WriteLine($"Error al cargar datos: {ex.Message}");
             }
         }
 
@@ -58,7 +63,10 @@ namespace Retiro_Interfaces_2024.Views
                 if (e.CommandName == "Accion") // Verificamos el comando del botón
                 {
                     hfModalState.Value = "true";  // Esto indica que el modal se debe mostrar
+                    
+                    //Llenar los datos del curso seleccionado
 
+                    
                     int rowIndex;
                     // Verificamos si el CommandArgument es un número
                     if (int.TryParse(e.CommandArgument.ToString(), out rowIndex))
@@ -67,23 +75,13 @@ namespace Retiro_Interfaces_2024.Views
                         GridViewRow row = GridView1.Rows[rowIndex];
 
                         // Extraemos los valores de cada celda
-                        string curso = row.Cells[0].Text;      // Columna "Curso"
-                        string profesor = row.Cells[1].Text;  // Columna "Profesor"
-                        string grupo = row.Cells[2].Text;     // Columna "Grupo"
-                        string aula = row.Cells[3].Text;      // Columna "Aula"
+                        string cod_Curso = row.Cells[0].Text;
+                        string curso = row.Cells[1].Text;      // Columna "Curso"
+                        string profesor = row.Cells[2].Text;  // Columna "Profesor"
+                        string grupo = row.Cells[3].Text;     // Columna "Grupo"
+                        string aula = row.Cells[4].Text;      // Columna "Aula"
+                        //Crear un nuevo objeto de curso con los datos obtenidos de la base de datos
 
-
-
-                        // Generar el script para mostrar un alert
-                        string alertMessage = $"Curso: {curso}\\nProfesor: {profesor}\\nGrupo: {grupo}\\nAula: {aula}";
-                        string script = $"alert('{alertMessage}');";
-
-                        // Registrar el script para ejecutarlo en el cliente
-                        ClientScript.RegisterStartupScript(this.GetType(), "ShowAlert", script, true);
-
-                        Response.Redirect("Solicitud.aspx?curso=" + curso + "&profesor=" + profesor);
-
-                        
                     }
                     else
                     {
@@ -97,14 +95,29 @@ namespace Retiro_Interfaces_2024.Views
 
         protected void btnAccept_Click(object sender, EventArgs e)
         {
-            // Abrir una nueva ventana con el formulario
-            string script = "window.open('/Login.aspx', '_blank', 'width=800,height=600');";
-            ClientScript.RegisterStartupScript(this.GetType(), "openWindow", script, true);
+            if(txtVoucher.Text == "")
+            {
+                string script = "alert('Ingrese un número de voucher');";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+            }
+            else
+            {
+                //Hacer verificación de número de voucher con procedimiento almacenado y gestion de voucher
+                
+                if (txtVoucher.Text == "12345")
+                {
+                    
+                    Response.Redirect("Solicitud.aspx");
+                }
+                else
+                {
+                    string script = "alert('Número de Voucher no valido');";
+                    ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+                }
+                    
+            }
+            
 
-            // Ocultar el overlay y cerrar el modal
-            string hideOverlayScript = "document.getElementById('overlay').style.display = 'none';";
-            string hideModalScript = "var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop')); myModal.hide();";
-            ClientScript.RegisterStartupScript(this.GetType(), "hideModalAndOverlay", hideOverlayScript + hideModalScript, true);
         }
 
     }

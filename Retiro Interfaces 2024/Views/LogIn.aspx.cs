@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Retiro_Interfaces_2024.Controllers;
 using Retiro_Interfaces_2024.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Retiro_Interfaces_2024.Views
     public partial class WebForm2 : System.Web.UI.Page
     {
 
-        
+        public static AlumnoModel alumno;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,18 +34,16 @@ namespace Retiro_Interfaces_2024.Views
             string codU = codUniversitario.Value.ToString();
             string password = contraseña.Value.ToString();
 
-            LoginF user = new LoginF(codU, password);
+            GestionaAlumno gAlumno = new GestionaAlumno();
 
-            bool userValido = user.VerUsuario();
-            bool valido = user.validar();
+            bool userValido = gAlumno.VerificarAlumno(codU);
+            bool valido = gAlumno.VerificarContraseña(codU, password);
 
             if (userValido)
             {
                 Response.Write("Usuario valido");
                 if (valido)
                 {
-
-                    Session["codUniversitario"] = codUniversitario.Value.ToString();
 
                     bool cam = cambio.Checked;
                     if (cam)
@@ -53,6 +52,7 @@ namespace Retiro_Interfaces_2024.Views
                     }
                     else
                     {
+                        alumno = gAlumno.crearAlumno(codU);
                         Response.Redirect("InicioAlumno.aspx");
                     }
                 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Retiro_Interfaces_2024.Models;
+using Retiro_Interfaces_2024.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +13,13 @@ namespace Retiro_Interfaces_2024
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblCuAlumno.Text = Session["codUniversitario"].ToString();
+            AlumnoModel miAlumno = WebForm2.alumno;
+            lblCuAlumno.Text = miAlumno.getCodigoUniversitario();
+            lblEscuela.Text = miAlumno.getEscuela().getNombre();
+            lblFacultad.Text = miAlumno.getEscuela().getFacultad().getNombre();
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Session.Abandon(); // Elimina toda la sesión
-            Session.Clear(); // Limpia los datos almacenados
             Response.Redirect("Login.aspx"); // Redirige al login
         }
     }

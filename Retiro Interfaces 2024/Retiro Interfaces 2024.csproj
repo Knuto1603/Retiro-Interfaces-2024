@@ -214,6 +214,8 @@
     <Content Include="Views\CursosDisp.aspx" />
     <Content Include="Views\Solicitud.aspx" />
     <Content Include="Views\Solicitudes.aspx" />
+    <Content Include="Views\SolicitudesSec.aspx" />
+    <Content Include="Views\SolRevisadasSec.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Views\web.config" />
@@ -228,6 +230,8 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\GestionaAlumno.cs" />
+    <Compile Include="Controllers\GestionConexion.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,7 +242,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlumnoModel.cs" />
+    <Compile Include="Models\CursoModel.cs" />
+    <Compile Include="Models\DetalleInscripcionModel.cs" />
+    <Compile Include="Models\DocenteModel.cs" />
+    <Compile Include="Models\EscuelaModel.cs" />
+    <Compile Include="Models\EvidenciaModel.cs" />
+    <Compile Include="Models\FacultadModel.cs" />
+    <Compile Include="Models\InscripcionPorCursosModel.cs" />
     <Compile Include="Models\LoginF.cs" />
+    <Compile Include="Models\PersonaModel.cs" />
+    <Compile Include="Models\RevisionSolicitudModel.cs" />
+    <Compile Include="Models\SecretarioAcademicoModel.cs" />
+    <Compile Include="Models\SolicitudModel.cs" />
+    <Compile Include="Models\VoucherModel.cs" />
     <Compile Include="Views\InicioSecretario.aspx.cs">
       <DependentUpon>InicioSecretario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -310,10 +327,23 @@
     <Compile Include="Views\Solicitudes.aspx.designer.cs">
       <DependentUpon>Solicitudes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\SolicitudesSec.aspx.cs">
+      <DependentUpon>SolicitudesSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SolicitudesSec.aspx.designer.cs">
+      <DependentUpon>SolicitudesSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SolRevisadasSec.aspx.cs">
+      <DependentUpon>SolRevisadasSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SolRevisadasSec.aspx.designer.cs">
+      <DependentUpon>SolRevisadasSec.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Views\css\" />
   </ItemGroup>
   <ItemGroup>
