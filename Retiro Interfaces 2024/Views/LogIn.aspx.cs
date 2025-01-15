@@ -34,7 +34,7 @@ namespace Retiro_Interfaces_2024.Views
             string codU = codUniversitario.Value.ToString();
             string password = contraseña.Value.ToString();
 
-           GestionaAlumno gAlumno = new GestionaAlumno();
+            GestionaAlumno gAlumno = new GestionaAlumno();
 
             bool userValido = gAlumno.VerificarAlumno(codU);
             bool valido = gAlumno.VerificarContraseña(codU, password);
@@ -44,8 +44,6 @@ namespace Retiro_Interfaces_2024.Views
                 Response.Write("Usuario valido");
                 if (valido)
                 {
-
-                    Session["codUniversitario"] = codUniversitario.Value.ToString();
 
                     bool cam = cambio.Checked;
                     if (cam)

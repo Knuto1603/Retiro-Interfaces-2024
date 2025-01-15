@@ -20,8 +20,6 @@ namespace Retiro_Interfaces_2024
         }
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            Session.Abandon(); // Elimina toda la sesión
-            Session.Clear(); // Limpia los datos almacenados
             Response.Redirect("Login.aspx"); // Redirige al login
         }
     }

@@ -13,12 +13,12 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="TextInput" data-val-required="El campo C&#243;digo de Alumno es requerido" class="form-label p-login">Código de Voucher:</label>
-                            <input type="text" class="form-control" id="voucherCode" placeholder="Código de Voucher">
+                            <asp:TextBox ID="txtVoucher" runat="server" CssClass="form-control" TextMode="SingleLine"/> <br />
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" id="btnAccept">Verificar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>                      
+                        <asp:Button ID="btnVerificar" runat="server" Text="Verificar" CssClass="btn btn-primary" OnClick="btnAccept_Click" />
                     </div>
                 </div>
             </div>
@@ -27,6 +27,7 @@
         <!-- GridView -->
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
             <Columns>
+                <asp:BoundField DataField="Codigo" HeaderText="Código de Curso" ItemStyle-CssClass="fila-grid" />
                 <asp:BoundField DataField="Curso" HeaderText="Nombre Curso" ItemStyle-CssClass="fila-grid" />
                 <asp:BoundField DataField="Profesor" HeaderText="Nombre Profesor" ItemStyle-CssClass="fila-grid" />
                 <asp:BoundField DataField="Grupo" HeaderText="Grupo" ItemStyle-CssClass="fila-grid" />
