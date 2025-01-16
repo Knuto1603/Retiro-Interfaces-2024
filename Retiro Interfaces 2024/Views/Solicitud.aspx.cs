@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Retiro_Interfaces_2024.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,14 @@ namespace Retiro_Interfaces_2024.Views
                 obtenerDatos(curso, profesor);
 
             }
+            AlumnoModel miAlumno = WebForm2.alumno;
+            lblNombre.Text = miAlumno.getPersona().getNombre();
+            lblApellido.Text = miAlumno.getPersona().getApellido();
+            lblCuAlumno.Text = miAlumno.getCodigoUniversitario();
+            lblEscuela.Text = miAlumno.getEscuela().getNombre();
+            lblFacultad.Text = miAlumno.getEscuela().getFacultad().getNombre();
+
+
         }
 
         public void obtenerDatos(String curso, String profesor)

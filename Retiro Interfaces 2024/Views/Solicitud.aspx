@@ -21,6 +21,10 @@
                 <h2>Datos del Alumno</h2>
                 <p>Cu Alumno:
                     <asp:Label ID="lblCuAlumno" runat="server"></asp:Label></p>
+                <p>Nombre:
+                    <asp:Label ID="lblNombre" runat="server"></asp:Label></p>
+                <p>Apellido:
+                    <asp:Label ID="lblApellido" runat="server"></asp:Label></p>
                 <p>Escuela Profesional:
                     <asp:Label ID="lblEscuela" runat="server"></asp:Label></p>
                 <p>Facultad:

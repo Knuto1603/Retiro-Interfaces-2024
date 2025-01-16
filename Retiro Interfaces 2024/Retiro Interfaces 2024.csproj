@@ -144,7 +144,6 @@
     <Content Include="Content\img\logounp.png" />
     <Content Include="Content\img\logounp64px.png" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Views\InicioSecretario.aspx" />
@@ -232,13 +231,6 @@
     </Compile>
     <Compile Include="Controllers\GestionaAlumno.cs" />
     <Compile Include="Controllers\GestionConexion.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
