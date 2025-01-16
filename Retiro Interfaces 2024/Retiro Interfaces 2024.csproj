@@ -208,7 +208,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Content\App.css" />
-    <Content Include="Views\js\JavaScript.js" />
+    <Content Include="Views\js\scripts.js" />
     <Content Include="Views\LogIn.aspx" />
     <Content Include="Views\InicioAlumno.aspx" />
     <Content Include="Views\CursosDisp.aspx" />

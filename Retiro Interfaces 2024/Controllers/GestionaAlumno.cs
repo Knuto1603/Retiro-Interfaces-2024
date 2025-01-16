@@ -67,6 +67,7 @@ namespace Retiro_Interfaces_2024.Controllers
 
         public AlumnoModel crearAlumno(string cod)
         {
+            //USAR CODIGO PARA EL PA
             DateTime soloFechaEspecifica = new DateTime(2023, 12, 25);
             FacultadModel fac = new FacultadModel("Hola","Industrial", soloFechaEspecifica);
             EscuelaModel esc = new EscuelaModel("051", "informarica", soloFechaEspecifica, fac);
@@ -77,7 +78,7 @@ namespace Retiro_Interfaces_2024.Controllers
 
 
             return alumno;
-        }
+}
 
     }
 }

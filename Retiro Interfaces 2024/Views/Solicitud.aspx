@@ -54,6 +54,7 @@
             </itemtemplate>
         </div>
     </div>
+
     <script>
         // Agregar un nuevo campo de entrada para enlaces
         function addLinkInput() {

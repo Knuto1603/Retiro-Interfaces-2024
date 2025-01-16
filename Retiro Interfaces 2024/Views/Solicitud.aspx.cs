@@ -35,10 +35,9 @@ namespace Retiro_Interfaces_2024.Views
 
         protected void btnSolicitar_Click(object sender, EventArgs e)
         {
+            Response.Redirect("InicioAlumno.aspx");
             string alert = "alert('Solicitud Registrada con Éxito');";
             ClientScript.RegisterStartupScript(this.GetType(), "alert", alert, true);
-            Response.Redirect("InicioAlumno.aspx");
-
         }
     }
 }
