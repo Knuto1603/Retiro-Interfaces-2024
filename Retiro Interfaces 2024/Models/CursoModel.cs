@@ -13,7 +13,7 @@ namespace Retiro_Interfaces_2024.Models
         private string creditos;
         private string estado;
 
-        CursoModel(string codigo, string nombre, string tipo, string creditos, string estado)
+        public CursoModel (string codigo, string nombre, string tipo, string creditos, string estado)
         {
             this.codigo = codigo;
             this.nombre = nombre;

@@ -25,7 +25,7 @@
         </div>
 
         <!-- GridView -->
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="Codigo" HeaderText="Código de Curso" ItemStyle-CssClass="fila-grid" />
                 <asp:BoundField DataField="Curso" HeaderText="Nombre Curso" ItemStyle-CssClass="fila-grid" />

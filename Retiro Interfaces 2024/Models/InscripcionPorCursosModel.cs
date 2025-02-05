@@ -7,22 +7,16 @@ namespace Retiro_Interfaces_2024.Models
 {
     public class InscripcionPorCursosModel
     {
-        private string semestre;
-        private DateTime fecha;
         private AlumnoModel alumno;
-        private string estado;
+        private DateTime dateTime;
 
-        InscripcionPorCursosModel(string semestre, DateTime fecha, AlumnoModel alumno, string estado)
+        InscripcionPorCursosModel(AlumnoModel alumno, DateTime dateTime)
         {
-            this.semestre = semestre;
-            this.fecha = fecha;
             this.alumno = alumno;
-            this.estado = estado;
+            this.dateTime = dateTime;    
         }
 
-        public string getSemestre() => semestre;
-        public DateTime getFecha() => fecha;
         public AlumnoModel getAlumno() => alumno;
-        public string getEstado() => estado;
+        public DateTime getDateTime() => dateTime;
     }
 }

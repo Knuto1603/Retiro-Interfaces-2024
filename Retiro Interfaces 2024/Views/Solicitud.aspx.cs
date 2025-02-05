@@ -25,16 +25,25 @@ namespace Retiro_Interfaces_2024.Views
                 obtenerDatos(curso, profesor);
 
             }
+
+            mostrarDatosAlumno();
+
+        }
+
+        public void mostrarDatosAlumno() {
             AlumnoModel miAlumno = WebForm2.alumno;
             lblNombre.Text = miAlumno.getPersona().getNombre();
             lblApellido.Text = miAlumno.getPersona().getApellido();
             lblCuAlumno.Text = miAlumno.getCodigoUniversitario();
             lblEscuela.Text = miAlumno.getEscuela().getNombre();
             lblFacultad.Text = miAlumno.getEscuela().getFacultad().getNombre();
-
-
         }
 
+        public void mostrarDatosCurso() { 
+            
+        }
+
+        //preguntar a sergio que muestra esto
         public void obtenerDatos(String curso, String profesor)
         {
             lblDocente.Text = profesor;

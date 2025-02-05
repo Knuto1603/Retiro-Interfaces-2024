@@ -18,40 +18,36 @@ namespace Retiro_Interfaces_2024.Views
         {
             if (!IsPostBack)
             {
-                CargarDatos();
+                List<CursoModel> cursos = GestionaCursos.ObtenerListaCursos(); // Obtener cursos desde la base de datos
+                CargarDatos(cursos); // Mostrar en el GridView
             }
-
-            // Verificar si se ha presionado el botón de aceptar
-
         }
-
-        private void CargarDatos()
+        
+        private void CargarDatos(List<CursoModel> listaCursos)
         {
-            // Instanciar la clase GestionaConexion
-            GestionaConexion conexion = new GestionaConexion();
-            AlumnoModel miAlumno = WebForm2.alumno;
-
-
             try
             {
-                // Nombre del procedimiento almacenado
-                string procedimiento = "sp_CargarDatosPorCod";
-                Dictionary<string,object> parametros = new Dictionary<string, object>();
-                parametros.Add("@CodUniversitario", miAlumno.getCodigoUniversitario());
+                DataTable dt = new DataTable();
 
-                // Ejecutar el procedimiento almacenado y obtener los datos
-                using (var reader = conexion.ConsultarProcedimiento(procedimiento,parametros))
+                // Definir columnas para el DataTable
+                dt.Columns.Add("Código", typeof(string));
+                dt.Columns.Add("Nombre", typeof(string));
+                dt.Columns.Add("Tipo", typeof(string));
+                dt.Columns.Add("Créditos", typeof(string));
+                dt.Columns.Add("Estado", typeof(string));
+
+                // Llenar el DataTable con la lista de cursos
+                foreach (var curso in listaCursos)
                 {
-                    DataTable dt = new DataTable();
-                    dt.Load(reader); // Cargar los datos desde el SqlDataReader al DataTable
-
-                    GridView1.DataSource = dt;
-                    GridView1.DataBind();
+                    dt.Rows.Add(curso.getCodigo(), curso.getNombre(), curso.getTipo(), curso.getCreditos(), curso.getEstado());
                 }
+                
+                // Asignar el DataTable al GridView y enlazar los datos
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
             }
             catch (Exception ex)
             {
-                // Manejar el error (puedes mostrar un mensaje o registrar el error)
                 Console.WriteLine($"Error al cargar datos: {ex.Message}");
             }
         }
@@ -120,5 +116,9 @@ namespace Retiro_Interfaces_2024.Views
 
         }
 
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
