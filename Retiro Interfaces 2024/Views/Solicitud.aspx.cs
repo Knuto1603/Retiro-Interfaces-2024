@@ -1,6 +1,7 @@
 ﻿using Retiro_Interfaces_2024.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -44,9 +45,33 @@ namespace Retiro_Interfaces_2024.Views
 
         protected void btnSolicitar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InicioAlumno.aspx");
-            string alert = "alert('Solicitud Registrada con Éxito');";
-            ClientScript.RegisterStartupScript(this.GetType(), "alert", alert, true);
+            string script = @"
+            alert('Solicitud Registrada con Éxito'" & ObtenerEnlacesConcatenados() & ");
+            setTimeout(function() {
+                window.location.href = 'InicioAlumno.aspx';
+            }, 0);"; // 2000 ms = 2 segundos de espera.
+
+            // Registrar el script para que se ejecute en el cliente.
+            ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, true);
+
         }
-    }
+
+        private string ObtenerEnlacesConcatenados()
+        {
+            string enlacesConcatenados = string.Empty;
+            foreach (Control control in linkContainer.Controls)
+            {
+                if (control is TextBox textBox && textBox.CssClass.Contains("link-input"))
+                {
+                    if (!string.IsNullOrEmpty(enlacesConcatenados))
+                    {
+                        enlacesConcatenados += ";";
+                    }
+                    enlacesConcatenados += textBox.Text;
+                }
+            }
+            return enlacesConcatenados;
+        }
+
+     }
 }

@@ -56,8 +56,11 @@ namespace Retiro_Interfaces_2024.Views
             }
         }
 
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Response.Redirect("VistaSolicitudSec.aspx");
+        }
 
-
-
+        
     }
 }

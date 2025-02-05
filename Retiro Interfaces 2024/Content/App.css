@@ -312,4 +312,16 @@ input:checked + .slider {
 
     input:checked + .slider:before {
         transform: translateX(26px); /* Movimiento del círculo */
-    }    
+    }  
+
+.contenido-motivo{
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-items: center;
+    gap:10px;
+}
+.motivo{
+    width: 100%;
+    height: 50px;
+}

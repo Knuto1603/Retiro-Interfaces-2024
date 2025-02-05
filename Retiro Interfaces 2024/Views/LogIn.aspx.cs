@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Caching;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -27,7 +28,6 @@ namespace Retiro_Interfaces_2024.Views
             public string challenge_ts { get; set; }
             public string hostname { get; set; }
         }
-
 
         protected void iniciarSesion()
         {

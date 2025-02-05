@@ -215,6 +215,7 @@
     <Content Include="Views\Solicitudes.aspx" />
     <Content Include="Views\SolicitudesSec.aspx" />
     <Content Include="Views\SolRevisadasSec.aspx" />
+    <Content Include="Views\VistaSolicitudSec.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Views\web.config" />
@@ -332,6 +333,13 @@
     </Compile>
     <Compile Include="Views\SolRevisadasSec.aspx.designer.cs">
       <DependentUpon>SolRevisadasSec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VistaSolicitudSec.aspx.cs">
+      <DependentUpon>VistaSolicitudSec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\VistaSolicitudSec.aspx.designer.cs">
+      <DependentUpon>VistaSolicitudSec.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

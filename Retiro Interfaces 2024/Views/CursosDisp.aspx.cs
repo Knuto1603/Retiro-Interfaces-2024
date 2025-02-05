@@ -75,7 +75,7 @@ namespace Retiro_Interfaces_2024.Views
                         GridViewRow row = GridView1.Rows[rowIndex];
 
                         // Extraemos los valores de cada celda
-                        string cod_Curso = row.Cells[0].Text;
+                        string cod_Curso = row.Cells[0].Text;   //Columna "Codigo de curso"
                         string curso = row.Cells[1].Text;      // Columna "Curso"
                         string profesor = row.Cells[2].Text;  // Columna "Profesor"
                         string grupo = row.Cells[3].Text;     // Columna "Grupo"

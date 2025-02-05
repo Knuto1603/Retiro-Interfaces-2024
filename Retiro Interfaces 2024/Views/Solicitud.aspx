@@ -47,8 +47,8 @@
             </div>
             <div class="section">
                 <h2>Enlaces de Evidencias</h2>
-                <div id="linkContainer">
-                    <input type="text" class="form-control link-input" name="links[]" placeholder="Ingresa un enlace" />
+                <div ID="linkContainer" runat="server">
+                    <input type="text" class="form-control link-input" name="links[]" placeholder="Ingrese un enlace" />
                 </div>
                 <button type="button" onclick="addLinkInput()">Agregar otro enlace</button>
                 <button type="button" onclick="removeLinkInput()">Eliminar enlace</button>
@@ -68,17 +68,17 @@
             const elementos = container.getElementsByClassName("form-control")
             contador = elementos.length - 1;
 
-            if (contador < 4) {
+            if (contador < 2) {
                 elementos.item(contador).disabled = true;
                 //Agregar campo nuevo
                 const newInput = document.createElement("input");
                 newInput.type = "text";
                 newInput.className = "form-control link-input";
                 newInput.name = "links[]";
-                newInput.placeholder = contador.toString();
+                newInput.placeholder = "Ingrese un enlace";
                 container.appendChild(newInput);
             } else {
-                alert("Solo puede agragar maximo 5 enlaces.");
+                alert("Solo puede agragar maximo 3 enlaces.");
             }
             
         }
@@ -98,6 +98,6 @@
 
             //Agregar campo nuevo
         }
-</script>
+    </script>
 
 </asp:Content>
