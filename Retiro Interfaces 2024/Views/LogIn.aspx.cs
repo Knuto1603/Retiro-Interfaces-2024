@@ -37,7 +37,7 @@ namespace Retiro_Interfaces_2024.Views
             GestionaAlumno gAlumno = new GestionaAlumno();
 
             bool userValido = gAlumno.VerificarAlumno(codU);
-            bool valido = gAlumno.VerificarContraseña(codU, password);
+            bool valido = gAlumno.VerificarContrasena(codU, password);
 
             if (userValido)
             {
@@ -52,7 +52,13 @@ namespace Retiro_Interfaces_2024.Views
                     }
                     else
                     {
-                        alumno = gAlumno.crearAlumno(codU);
+                        alumno = gAlumno.CrearAlumno(codU);
+
+                        //Metodo para obtener la lista de cursos inscriptos (DetalleInscripcion)
+
+
+                        
+
                         Response.Redirect("InicioAlumno.aspx");
                     }
                 }
@@ -94,5 +100,15 @@ namespace Retiro_Interfaces_2024.Views
             }*/
 
         }
+
+        public List<DetalleInscripcionModel> obtenerDetalllesInscripcion(AlumnoModel alumno) {
+
+            String idInscripcion;
+
+            //idInscripcion = 
+            
+            return null;
+        }
+        
     }
 }

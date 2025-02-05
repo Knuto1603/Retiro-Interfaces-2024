@@ -11,13 +11,13 @@ namespace Retiro_Interfaces_2024.Controllers
     public class GestionaPersona
     {
         private static GestionaConexion conn = new GestionaConexion();
-        public static PersonaModel ObtenerPersonaDeBD(string cod)
+        public static PersonaModel ObtenerPersonaDeBD(string codigoUniversitario)
         {
             using (SqlConnection conn1 = conn.CrearConexion())
             {
                 SqlCommand cmd = new SqlCommand("sp_ObtenerPersona", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoUniversitario", cod);
+                cmd.Parameters.AddWithValue("@CodigoUniversitario", codigoUniversitario);
 
                 conn1.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -25,13 +25,13 @@ namespace Retiro_Interfaces_2024.Controllers
                     if (reader.Read())
                     {
                         return new PersonaModel.Builder()
-                            .addNombre(reader["Nombre"].ToString())
-                            .addApellido(reader["Apellido"].ToString())
-                            .addDireccion(reader["Direccion"].ToString())
-                            .addLugarNacimiento(reader["Lugar_Nacimiento"].ToString())
-                            .addFechaNacimiento(Convert.ToDateTime(reader["Fecha_Nacimiento"]))
-                            .addTipoDocIdent(reader["Tipo_Documento_Identidad"].ToString())
-                            .addNumeroDoc(reader["Numero_Documento"].ToString())
+                            .addNombre(reader["nombre"].ToString())
+                            .addApellido(reader["apellido"].ToString())
+                            .addDireccion(reader["direccion"].ToString())
+                            .addLugarNacimiento(reader["lugarNacimiento"].ToString())
+                            .addFechaNacimiento(Convert.ToDateTime(reader["fechaNacimiento"]))
+                            .addTipoDocIdent(reader["tipoDocumento"].ToString())
+                            .addNumeroDoc(reader["numeroDocumento"].ToString())
                             .builder();
                     }
                 }

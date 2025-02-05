@@ -10,77 +10,73 @@ namespace Retiro_Interfaces_2024.Controllers
     {
         private static GestionaConexion conn = new GestionaConexion();
 
-        public bool VerificarAlumno(string codigo)
+        public bool VerificarAlumno(string codigoUniversitario)
         {
-            bool esValido = false;
             using (SqlConnection conn1 = conn.CrearConexion())
             {
                 SqlCommand cmd = new SqlCommand("sp_VerificarAlumno", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Codigo_Universitario", codigo);
+                cmd.Parameters.AddWithValue("@Codigo_Universitario", codigoUniversitario);
 
                 try
                 {
                     conn1.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    esValido = count > 0;
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de errores
+                    throw new Exception("Error al verificar alumno: " + ex.Message);
                 }
             }
-            return esValido;
         }
 
-        public bool VerificarContraseña(string codigoUniversitario, string contraseña)
+        public bool VerificarContrasena(string codigoUniversitario, string contrasena)
         {
-            bool esCorrecta = false;
             using (SqlConnection conn1 = conn.CrearConexion())
             {
                 SqlCommand cmd = new SqlCommand("sp_VerificarContraseña", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Codigo_Universitario", codigoUniversitario);
-                cmd.Parameters.AddWithValue("@Contraseña", contraseña);
+                cmd.Parameters.AddWithValue("@Contraseña", contrasena);
 
                 try
                 {
                     conn1.Open();
-                    int count = (int)cmd.ExecuteScalar();
-                    esCorrecta = count > 0;
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
                 }
                 catch (Exception ex)
                 {
-                    // Manejo de errores
+                    throw new Exception("Error al verificar contraseña: " + ex.Message);
                 }
             }
-            return esCorrecta;
         }
 
-        public AlumnoModel crearAlumno(string cod)
+        public AlumnoModel CrearAlumno(string codigoUniversitario)
         {
-            PersonaModel persona = GestionaPersona.ObtenerPersonaDeBD(cod);
-            FacultadModel facultad = GestionaFacultad.ObtenerFacultadDeBD(cod);
-            EscuelaModel escuela = GestionaEscuela.ObtenerEscuelaDeBD(cod, facultad);
-            var datosAlumno = ObtenerDatosAlumnoDeBD(cod);
+            PersonaModel persona = GestionaPersona.ObtenerPersonaDeBD(codigoUniversitario);
+            FacultadModel facultad = GestionaFacultad.ObtenerFacultadDeBD(codigoUniversitario);
+            EscuelaModel escuela = GestionaEscuela.ObtenerEscuelaDeBD(codigoUniversitario, facultad);
+            var datosAlumno = ObtenerDatosAlumnoDeBD(codigoUniversitario);
 
             return new AlumnoModel.Builder()
-                .SetCodigoUniversitario(cod)
+                .SetCodigoUniversitario(codigoUniversitario)
                 .SetCorreoInstitucional(datosAlumno["correoInstitucional"])
-                .SetContrasena(datosAlumno["contraseña"])
+                .SetContrasena(datosAlumno["contrasena"])
                 .SetEstado(datosAlumno["estado"])
                 .SetEscuela(escuela)
                 .SetPersona(persona)
                 .Build();
         }
 
-        private Dictionary<string, string> ObtenerDatosAlumnoDeBD(string cod)
+        private Dictionary<string, string> ObtenerDatosAlumnoDeBD(string codigoUniversitario)
         {
             using (SqlConnection conn1 = conn.CrearConexion())
             {
                 SqlCommand cmd = new SqlCommand("sp_ObtenerDatosAlumno", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoUniversitario", cod);
+                cmd.Parameters.AddWithValue("@CodigoUniversitario", codigoUniversitario);
 
                 conn1.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -89,14 +85,15 @@ namespace Retiro_Interfaces_2024.Controllers
                     {
                         return new Dictionary<string, string>
                         {
-                            { "correoInstitucional", reader["Correo_Institucional"].ToString() },
-                            { "contraseña", reader["Contraseña"].ToString() },
-                            { "estado", reader["Estado"].ToString() }
+                            { "correoInstitucional", reader["correoInstitucional"].ToString() },
+                            { "contrasena", reader["contraseña"].ToString() },
+                            { "estado", reader["estado"].ToString() }
                         };
                     }
                 }
             }
             throw new Exception("No se encontraron los datos del alumno.");
         }
+        
     }
 }

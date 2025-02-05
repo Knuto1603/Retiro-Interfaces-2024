@@ -11,13 +11,14 @@ namespace Retiro_Interfaces_2024.Controllers
     public class GestionaFacultad
     {
         private static GestionaConexion conn = new GestionaConexion();
-        public static FacultadModel ObtenerFacultadDeBD(string cod)
+
+        public static FacultadModel ObtenerFacultadDeBD(string codigoUniversitario)
         {
             using (SqlConnection conn1 = conn.CrearConexion())
             {
                 SqlCommand cmd = new SqlCommand("sp_ObtenerFacultad", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoUniversitario", cod);
+                cmd.Parameters.AddWithValue("@CodigoUniversitario", codigoUniversitario);
 
                 conn1.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -25,9 +26,9 @@ namespace Retiro_Interfaces_2024.Controllers
                     if (reader.Read())
                     {
                         return new FacultadModel(
-                            reader["Codigo_Facultad"].ToString(),
-                            reader["Nombre"].ToString(),
-                            Convert.ToDateTime(reader["Fecha_Creacion"])
+                            reader["codigoFacultad"].ToString(),
+                            reader["nombre"].ToString(),
+                            Convert.ToDateTime(reader["fechaCreacion"])
                         );
                     }
                 }

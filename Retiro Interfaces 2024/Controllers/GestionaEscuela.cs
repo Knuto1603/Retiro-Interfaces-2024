@@ -11,13 +11,14 @@ namespace Retiro_Interfaces_2024.Controllers
     public class GestionaEscuela
     {
         private static GestionaConexion conn = new GestionaConexion();
-        public static EscuelaModel ObtenerEscuelaDeBD(string cod, FacultadModel facultad)
+
+        public static EscuelaModel ObtenerEscuelaDeBD(string codigoUniversitario, FacultadModel facultad)
         {
             using (SqlConnection conn1 = conn.CrearConexion())
             {
                 SqlCommand cmd = new SqlCommand("sp_ObtenerEscuela", conn1);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@CodigoUniversitario", cod);
+                cmd.Parameters.AddWithValue("@CodigoUniversitario", codigoUniversitario);
 
                 conn1.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
@@ -25,9 +26,9 @@ namespace Retiro_Interfaces_2024.Controllers
                     if (reader.Read())
                     {
                         return new EscuelaModel(
-                            reader["Codigo_Escuela"].ToString(),
-                            reader["Nombre"].ToString(),
-                            Convert.ToDateTime(reader["Fecha_Creacion"]),
+                            reader["codigoEscuela"].ToString(),
+                            reader["nombre"].ToString(),
+                            Convert.ToDateTime(reader["fechaCreacion"]),
                             facultad
                         );
                     }

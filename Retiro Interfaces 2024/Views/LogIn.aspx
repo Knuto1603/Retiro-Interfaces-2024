@@ -9,7 +9,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="Contenido" runat="server">
 
     <div class="container">
-        <button type="button" onclick="openNewPage()">Hola</button>
+        
         <div class="row" id="login">
 
             <!--Carrucel-->
@@ -102,6 +102,7 @@
                 </fieldset>
 
             </div>
+            Unidentified
         </div>
 
     </div>

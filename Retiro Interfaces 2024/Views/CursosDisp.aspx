@@ -27,11 +27,11 @@
         <!-- GridView -->
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
-                <asp:BoundField DataField="Codigo" HeaderText="Código de Curso" ItemStyle-CssClass="fila-grid" />
-                <asp:BoundField DataField="Curso" HeaderText="Nombre Curso" ItemStyle-CssClass="fila-grid" />
-                <asp:BoundField DataField="Profesor" HeaderText="Nombre Profesor" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="CodigoCurso" HeaderText="Código" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="NombreCurso" HeaderText="Curso" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="Docente" HeaderText="Docente" ItemStyle-CssClass="fila-grid" />
                 <asp:BoundField DataField="Grupo" HeaderText="Grupo" ItemStyle-CssClass="fila-grid" />
-                <asp:BoundField DataField="Aula" HeaderText="Aula" ItemStyle-CssClass="fila-grid" />
+                <asp:BoundField DataField="Creditos" HeaderText="Creditos" ItemStyle-CssClass="fila-grid" />
                 <asp:TemplateField ItemStyle-CssClass="fila-grid">
                     <ItemTemplate>
                         <asp:Button ID="btnAccion" runat="server" Text="Solicitar" CommandName="Accion" CommandArgument='<%# Container.DataItemIndex %>' CssClass="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />

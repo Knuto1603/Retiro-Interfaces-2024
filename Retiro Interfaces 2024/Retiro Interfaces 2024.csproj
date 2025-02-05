@@ -242,13 +242,16 @@
     <Compile Include="Models\AlumnoModel.cs" />
     <Compile Include="Models\CursoModel.cs" />
     <Compile Include="Models\DetalleInscripcionModel.cs" />
+    <Compile Include="Models\DetalleProgramacionModel.cs" />
     <Compile Include="Models\DocenteModel.cs" />
     <Compile Include="Models\EscuelaModel.cs" />
     <Compile Include="Models\EvidenciaModel.cs" />
     <Compile Include="Models\FacultadModel.cs" />
     <Compile Include="Models\InscripcionPorCursosModel.cs" />
     <Compile Include="Models\LoginF.cs" />
+    <Compile Include="Models\MotivoModel.cs" />
     <Compile Include="Models\PersonaModel.cs" />
+    <Compile Include="Models\ProgramacionAcademicaModel.cs" />
     <Compile Include="Models\RevisionSolicitudModel.cs" />
     <Compile Include="Models\SecretarioAcademicoModel.cs" />
     <Compile Include="Models\SolicitudModel.cs" />

@@ -27,7 +27,7 @@ namespace Retiro_Interfaces_2024.Views
 
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                SqlDataAdapter da = new SqlDataAdapter("verSolitudesAlumno", conn);
+                SqlDataAdapter da = new SqlDataAdapter("verSolicitudes", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -35,6 +35,8 @@ namespace Retiro_Interfaces_2024.Views
                 GridView1.DataBind();
             }
         }
+
+
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
