@@ -5,13 +5,16 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace Retiro_Interfaces_2024.Views
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
+        AlumnoModel miAlumno = WebForm2.alumno;
         protected void Page_Load(object sender, EventArgs e)
+
         {
             if (!IsPostBack)
             {
@@ -26,7 +29,7 @@ namespace Retiro_Interfaces_2024.Views
                 obtenerDatos(curso, profesor);
 
             }
-            AlumnoModel miAlumno = WebForm2.alumno;
+            
             lblNombre.Text = miAlumno.getPersona().getNombre();
             lblApellido.Text = miAlumno.getPersona().getApellido();
             lblCuAlumno.Text = miAlumno.getCodigoUniversitario();
@@ -45,33 +48,17 @@ namespace Retiro_Interfaces_2024.Views
 
         protected void btnSolicitar_Click(object sender, EventArgs e)
         {
-            string script = @"
-            alert('Solicitud Registrada con Éxito'" & ObtenerEnlacesConcatenados() & ");
-            setTimeout(function() {
+            string script = $@"
+            alert('Solicitud Registrada con Éxito');
+            setTimeout(function() {{
                 window.location.href = 'InicioAlumno.aspx';
-            }, 0);"; // 2000 ms = 2 segundos de espera.
+            }}, 2000);"; // 2000 ms = 2 segundos de espera.
 
             // Registrar el script para que se ejecute en el cliente.
             ClientScript.RegisterStartupScript(this.GetType(), "alertAndRedirect", script, true);
-
         }
 
-        private string ObtenerEnlacesConcatenados()
-        {
-            string enlacesConcatenados = string.Empty;
-            foreach (Control control in linkContainer.Controls)
-            {
-                if (control is TextBox textBox && textBox.CssClass.Contains("link-input"))
-                {
-                    if (!string.IsNullOrEmpty(enlacesConcatenados))
-                    {
-                        enlacesConcatenados += ";";
-                    }
-                    enlacesConcatenados += textBox.Text;
-                }
-            }
-            return enlacesConcatenados;
-        }
+
 
      }
 }
