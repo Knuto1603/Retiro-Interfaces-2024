@@ -42,6 +42,14 @@
                     <asp:Label ID="lblDocente" runat="server"></asp:Label></p>
             </div>
             <div class="section">
+                    
+                    <asp:DropDownList ID="comboBoxMotivo" runat="server">
+                        <asp:ListItem>Salud</asp:ListItem>
+                        <asp:ListItem>Trabajo</asp:ListItem>
+                        <asp:ListItem>Tiempo</asp:ListItem>
+                        <asp:ListItem>Prevencion</asp:ListItem>
+                    </asp:DropDownList>
+                
                 <h2>Motivos</h2>
                 <asp:TextBox ID="txtMotivos" runat="server" TextMode="MultiLine" CssClass="motivos-textbox"></asp:TextBox>
             </div>
@@ -55,6 +63,7 @@
             </div>
             <itemtemplate>
                 <asp:Button ID="btnSolicitar" runat="server" Text="Solicitar" CssClass="btn btn-primary" OnClick="btnSolicitar_Click" />
+            <asp:Button ID="Button1" runat="server" Text="Cancelar" CssClass="btn btn-primary" OnClick="btnSolicitar_Click" />
             </itemtemplate>
         </div>
     </div>

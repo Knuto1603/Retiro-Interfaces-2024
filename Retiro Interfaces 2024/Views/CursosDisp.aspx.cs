@@ -16,6 +16,8 @@ namespace Retiro_Interfaces_2024.Views
     public partial class WebForm3 : System.Web.UI.Page
     {
 
+        public static string numvaucher;
+
         public static string cod_Curso;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -104,10 +106,11 @@ namespace Retiro_Interfaces_2024.Views
             else
             {
                 //Hacer verificación de número de voucher con procedimiento almacenado y gestion de voucher
-                
-                if (txtVoucher.Text == "12345")
+               
+
+                if (txtVoucher.Text == "123456")
                 {
-                    
+                    numvaucher = txtVoucher.Text;
                     Response.Redirect("Solicitud.aspx");
                 }
                 else
