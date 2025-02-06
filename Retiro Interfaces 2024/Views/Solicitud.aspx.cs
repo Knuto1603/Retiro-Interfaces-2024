@@ -1,4 +1,5 @@
-﻿using Retiro_Interfaces_2024.Models;
+﻿using Retiro_Interfaces_2024.Controllers;
+using Retiro_Interfaces_2024.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Retiro_Interfaces_2024.Views
 {
     public partial class WebForm4 : System.Web.UI.Page
     {
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,7 +25,7 @@ namespace Retiro_Interfaces_2024.Views
 
                 // Llamar al método para mostrar los datos
                 obtenerDatos(curso, profesor);
-
+                mostrarDatosCurso();
             }
 
             mostrarDatosAlumno();
@@ -39,8 +41,16 @@ namespace Retiro_Interfaces_2024.Views
             lblFacultad.Text = miAlumno.getEscuela().getFacultad().getNombre();
         }
 
-        public void mostrarDatosCurso() { 
-            
+        public void mostrarDatosCurso() {
+
+            CursoRetiroModel cursoRetiro;
+
+            cursoRetiro = GestionaCursoRetiro.ObtenerCursoDeBD(WebForm3.cod_Curso);
+            lblCodigo.Text = cursoRetiro.GetCodigo();
+            lblNombreCurso.Text = cursoRetiro.GetNombre();
+            lblCreditos.Text = cursoRetiro.GetCreditos();
+            lblDocente.Text = cursoRetiro.GetDocente();
+
         }
 
         //preguntar a sergio que muestra esto

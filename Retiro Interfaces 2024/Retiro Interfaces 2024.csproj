@@ -230,6 +230,7 @@
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\GestionaAlumno.cs" />
+    <Compile Include="Controllers\GestionaCursoRetiro.cs" />
     <Compile Include="Controllers\GestionaCursos.cs" />
     <Compile Include="Controllers\GestionaEscuela.cs" />
     <Compile Include="Controllers\GestionaFacultad.cs" />
@@ -241,6 +242,7 @@
     </Compile>
     <Compile Include="Models\AlumnoModel.cs" />
     <Compile Include="Models\CursoModel.cs" />
+    <Compile Include="Models\CursoRetiroModel.cs" />
     <Compile Include="Models\DetalleInscripcionModel.cs" />
     <Compile Include="Models\DetalleProgramacionModel.cs" />
     <Compile Include="Models\DocenteModel.cs" />

@@ -12,8 +12,11 @@ using Retiro_Interfaces_2024.Models;
 
 namespace Retiro_Interfaces_2024.Views
 {
+ 
     public partial class WebForm3 : System.Web.UI.Page
     {
+
+        public static string cod_Curso;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -73,7 +76,7 @@ namespace Retiro_Interfaces_2024.Views
                         GridViewRow row = GridView1.Rows[rowIndex];
 
                         // Extraemos los valores de cada celda
-                        string cod_Curso = row.Cells[0].Text;
+                        cod_Curso = row.Cells[0].Text;
                         string curso = row.Cells[1].Text;      // Columna "Curso"
                         string profesor = row.Cells[2].Text;  // Columna "Profesor"
                         string grupo = row.Cells[3].Text;     // Columna "Grupo"
